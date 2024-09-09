@@ -163,7 +163,7 @@ This repository contains solutions for various AWS Lambda automation assignments
 **Steps:**
 1. **Lambda Function:** Write a function to fetch the latest snapshot and create a new instance.
 2. **Trigger:** Manually or schedule the function based on recovery needs.
-3. **Testing:** Verify instance creation from snapshot.
+3. **Testing:** Verify instance creation from the snapshot.
 
 ### Assignment 18: Autosave EC2 Instance State Before Shutdown
 **Objective:** Save EC2 instance state to S3 before shutdown.
@@ -172,3 +172,18 @@ This repository contains solutions for various AWS Lambda automation assignments
 1. **Lambda Function:** Write a function to save instance state to S3 before termination.
 2. **Trigger:** Use CloudWatch Events to detect termination and invoke the function.
 3. **Testing:** Verify state saving to S3 before
+
+### Assignment 19: Automated Lambda Cleanup for Stale DynamoDB Entries
+
+**Objective:** Automate the cleanup of stale or expired items in a DynamoDB table using AWS Lambda and Boto3.
+
+**Steps:**
+1. **Configure DynamoDB and Lambda:**
+  - **DynamoDB Setup:** Create a DynamoDB table with a TTL (Time to Live) attribute to manage expiration.
+  - **Lambda IAM Role:** Set up an IAM role with AmazonDynamoDBFullAccess and CloudWatchLogsFullAccess permissions.
+2. **Implement the Lambda Function:**
+  - **Function Code:** Write a Python Lambda function using Boto3 to scan the table and delete expired items based on the TTL attribute.
+  - **Testing:** Manually invoke the Lambda function to ensure it correctly deletes stale items and checks CloudWatch Logs for execution details.
+3. **Automate and Monitor:**
+  - **Schedule Lambda:** Create a CloudWatch Events rule to automatically trigger the Lambda function daily.
+  - **Monitor:** Verify the automated cleanup process by checking the DynamoDB table and CloudWatch Logs.
